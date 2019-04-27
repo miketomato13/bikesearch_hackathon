@@ -13,7 +13,6 @@ export default class Home extends Component {
     axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
       .then(res => {
         this.setState({ stations: res.data.network.stations })
-        console.log(this.state.stations)
       })
     }
 
@@ -45,7 +44,7 @@ export default class Home extends Component {
       <div>
         <Navbar/>
         <Stations stations={stations} distance={this.distance}/>
-        <Map stations={stations} />
+        {stations.length && <Map stations={stations} />}
       </div>
     )
   }
