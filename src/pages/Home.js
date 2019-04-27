@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import Stations from '../components/Stations'
+import Map from '../components/Map'
 
 
 export default class Home extends Component {
@@ -22,6 +23,7 @@ export default class Home extends Component {
       <div>
         <Navbar/>
         <Stations stations={stations} />
+        <Map stations={stations} />
       </div>
     )
   }
