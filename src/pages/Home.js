@@ -38,7 +38,7 @@ export default class Home extends Component {
   switchLocation = (e, location) => {
     e.preventDefault();
     this.setState({ location });
-     window.scrollTo(0, 0)
+     window.scrollTo({top: 0, behavior: "smooth"})
   };
 
   distance = (lat1, lon1, lat2, lon2, unit) => {

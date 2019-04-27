@@ -28,8 +28,8 @@ const Locations = (props) => {
   locations = locations.slice(0,20)
   return (
     <div>
-      <table class="table">
-        <thead class="thead-dark">
+      <table className="table">
+        <thead className="thead-light">
           <tr>
             <th scope="col">Address</th>
             <th scope="col">Distance</th>
@@ -46,7 +46,7 @@ const Locations = (props) => {
               key={location.id}
             >
               <td>{location.extra.address}</td>
-              <td>{props.distance(location.latitude, location.longitude, userLat,  userLong, 'M').toFixed(2)} miles</td>
+              <td>{props.distance(location.latitude, location.longitude, userLat,  userLong, 'M').toFixed(2)} mi</td>
               <td>{location.free_bikes}</td>
             </tr>
               )
