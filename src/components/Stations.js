@@ -18,6 +18,7 @@ const Stations = (props) => {
     return 0;
 
   })
+  stations.splice(-1,1) //removes the last element, which is a demo station
   return (
     <div>
       <table>
