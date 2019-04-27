@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 
-const NavBar = () => {
+const Navbar = () => {
   return(
       <div>
         <h1> fags </h1>
@@ -11,4 +11,4 @@ const NavBar = () => {
 
 }
 
-export default NavBar
+export default Navbar
