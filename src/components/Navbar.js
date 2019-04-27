@@ -4,7 +4,7 @@ import '../App.css'
 const Navbar = () => {
   return(
       <div>
-        <h1> fags </h1>
+        <h1> I am here</h1>
       </div>
 
   )
