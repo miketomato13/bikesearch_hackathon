@@ -45,3 +45,8 @@
     height: 400px;
   }
 }
+
+.pop {
+  background-color: white;
+  align-items: center;
+}

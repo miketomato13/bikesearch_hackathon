@@ -12,23 +12,20 @@ class Map extends Component {
     mapboxgl.accessToken = API_KEY;
     const mapOptions = {
       container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v9",
+      style: "mapbox://styles/jordanmarcr/cjuzpsa3w0pz41fs382nghi20",
       zoom: 10,
       center: [-80.2043, 25.803],
     };
     this.createMap(mapOptions, geolocationOptions);
     console.log(this.props)
   }
-
   shouldComponentUpdate(nextProps) {
     return this.props.currentLocation !== nextProps.currentLocation;
   }
-
   componentDidUpdate() {
     const { lng, lat } = this.props.currentLocation;
     this.props.currentLocation && this.flyTo({ lng, lat });
   }
-
   createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
@@ -49,16 +46,16 @@ class Map extends Component {
       map.on("click", "locations", e => {
         const { properties, geometry } = e.features[0];
         const coordinates = geometry.coordinates.slice();
-        const { name, address } = properties;
+        const { name, free_bikes } = properties;
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
-            `<div>
+            `<div class="pop">
             <p>${name}</p>
-            <p>Available:</p>
+            <p>Available: ${free_bikes}</p>
           </div>`
           )
           .addTo(map);

@@ -9,7 +9,7 @@ export const parseGeoJson = data => {
     properties: {
       id: station.id,
       name: station.name,
-      address: `${station.address}`
+      free_bikes: `${station.free_bikes}`
     }
   }));
   return {
