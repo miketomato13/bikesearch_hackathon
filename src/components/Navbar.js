@@ -1,19 +1,17 @@
 import React from 'react'
 import '../App.css'
 import palmtree from '../images/palmtree.png'
+import miamiridez from '../images/miamiridez.png'
 
 const Navbar = () => {
   return(
-    <nav class="navbar navbar-dd bg-light">
-    <div class="container-fluid">
+    <nav class="navbar navbar-dd">
+    <div>
       <div class="navbar-header">
-        <a class="navbar-brand">
-        <img
-            src={palmtree}
-            alt='atl'
-            className='palmtree'
+        <img class="logo"
+             src={miamiridez}
         />
-        </a>
+
       </div>
     </div>
   </nav>
