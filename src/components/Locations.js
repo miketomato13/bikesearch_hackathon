@@ -22,7 +22,7 @@ const Locations = (props) => {
   return (
     <div>
       <table class="table">
-        <thead class="thead-light">
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Address</th>
             <th scope="col">Distance</th>
