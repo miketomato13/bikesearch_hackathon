@@ -1,5 +1,12 @@
+
 body {
   background-color: rgb(171, 214, 214);
+}
+
+#footer{
+  background-color: #edfffc!important;
+  margin-top:2rem;
+  box-shadow: 2px 2px 20px #ffb5fa;
 }
 
 .palmtree {
@@ -9,6 +16,7 @@ body {
 .table {
   margin: auto;
   margin-top: 3rem;
+  margin-bottom: 2rem;
   width: 80%;
   text-align: center;
   background-color: white;
