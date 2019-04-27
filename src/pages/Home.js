@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 import Locations from '../components/Locations'
 import Map from '../components/Map'
+import FooterPage from '../components/FooterPage'
 
 
 export default class Home extends Component {
@@ -82,6 +83,7 @@ export default class Home extends Component {
           switchLocation={this.switchLocation}
           user_location={user_location}
         />
+        <FooterPage/>
       </div>
     )
   }
