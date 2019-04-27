@@ -1,6 +1,5 @@
 import React from 'react'
 import '../App.css'
-import palmtree from '../images/palmtree.png'
 import miamiridez from '../images/miamiridez.png'
 
 const Navbar = () => {

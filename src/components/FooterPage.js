@@ -8,7 +8,7 @@ const FooterPage = () => {
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
           <h5 className="title">Miami Ridez</h5>
-          &copy; {new Date().getFullYear()} Copyright: Miami Ridez
+          &copy; {new Date().getFullYear()} Copyright: Miami Ridez LLC
         </MDBContainer>
       </div>
     </MDBFooter>
