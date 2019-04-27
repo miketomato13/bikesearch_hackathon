@@ -4,12 +4,12 @@ export const parseGeoJson = data => {
     type: "Feature",
     geometry: {
       type: "Point",
-      coordinates: [station.longtitude, station.latitude]
+      coordinates: [station.longitude, station.latitude]
     },
     properties: {
       id: station.id,
       name: station.name,
-      address: `${station.street}, ${station.city}, ${station.state}`
+      address: `${station.address}`
     }
   }));
   return {
@@ -28,7 +28,7 @@ export const locationLayers = {
   id: "locations",
   type: "symbol",
   source: "locations",
-  layout: { "icon-image": "icon_badge", "icon-size" : .2 , "icon-allow-overlap": true }
+  layout: { 'icon-image':'bicycle-15', 'icon-allow-overlap': true}
 };
 
 // icon_badge

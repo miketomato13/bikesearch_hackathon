@@ -12,11 +12,12 @@ class Map extends Component {
     mapboxgl.accessToken = API_KEY;
     const mapOptions = {
       container: this.mapContainer,
-      style: "mapbox://styles/jordanmarcr/cjtipvcx88loh1fs8dk0unon5",
+      style: "mapbox://styles/mapbox/streets-v9",
       zoom: 10,
       center: [-80.2043, 25.803],
     };
     this.createMap(mapOptions, geolocationOptions);
+    console.log(this.props)
   }
 
   shouldComponentUpdate(nextProps) {
@@ -57,7 +58,7 @@ class Map extends Component {
           .setHTML(
             `<div>
             <p>${name}</p>
-            <p>${address}</p>
+            <p>Available:</p>
           </div>`
           )
           .addTo(map);

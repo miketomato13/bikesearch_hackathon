@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+#map{
+  width: 30vw;
+  height: 400px;
+  background-color: azure;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #map{
+    width: 400px;
+    height: 400px;
+  }
+}
