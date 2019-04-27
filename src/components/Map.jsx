@@ -17,7 +17,6 @@ class Map extends Component {
       center: [-80.2043, 25.803],
     };
     this.createMap(mapOptions, geolocationOptions);
-    console.log(this.props)
   }
   shouldComponentUpdate(nextProps) {
     return this.props.currentLocation !== nextProps.currentLocation;
@@ -29,8 +28,8 @@ class Map extends Component {
   createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
-    const { stations } = this.props;
-    const parsedLocations = parseGeoJson(stations);
+    const { locations } = this.props;
+    const parsedLocations = parseGeoJson(locations);
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: geolocationOptions,
@@ -64,8 +63,8 @@ class Map extends Component {
   };
   fetchLocations = async () => {
     const map = this.map;
-    const { stations } = this.props;
-    const parsedLocations = parseGeoJson(stations);
+    const { locations } = this.props;
+    const parsedLocations = parseGeoJson(locations);
     map.getSource("locations").setData(parsedLocations);
   };
   flyTo = ({ lng, lat }) => {
@@ -80,7 +79,6 @@ class Map extends Component {
     this.map.remove();
   }
   render() {
-    console.log(this.props.stations);
     return <div id="map" ref={el => (this.mapContainer = el)} />;
   }
 }

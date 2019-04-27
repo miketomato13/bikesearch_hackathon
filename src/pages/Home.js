@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
-import Stations from '../components/Stations'
+import Locations from '../components/Locations'
 import Map from '../components/Map'
 
 
 export default class Home extends Component {
-  state = { stations: [],
+  state = { locations: [],
+            location: {}
           }
 
   componentDidMount() {
     axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
       .then(res => {
-        this.setState({ stations: res.data.network.stations })
+        this.setState({ locations: res.data.network.stations })
       })
     }
+
+  switchLocation = (e, location) => {
+    e.preventDefault();
+    this.setState({ location });
+  };
 
   distance = (lat1, lon1, lat2, lon2, unit) => {
     if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -39,12 +45,23 @@ export default class Home extends Component {
   }
 
   render() {
-    const { stations } = this.state
+    const { locations, location } = this.state
+    const currentLocation = { lng: location.longitude, lat: location.latitude }
+    console.log(currentLocation)
     return (
       <div>
         <Navbar/>
-        <Stations stations={stations} distance={this.distance}/>
-        {stations.length && <Map stations={stations} />}
+        {locations.length &&
+        <Map
+          locations={locations}
+          currentLocation={currentLocation}
+        />
+        }
+        <Locations
+          locations={locations}
+          distance={this.distance}
+          switchLocation={this.switchLocation}
+        />
       </div>
     )
   }

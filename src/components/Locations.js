@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Stations = (props) => {
-  let stations = props.stations
+const Locations = (props) => {
+  let locations = props.locations
   let currentLat = 25.7760782;
   let currentLong = -80.194204;
-  stations = stations.sort((a,b) => {
+  locations = locations.sort((a,b) => {
     let distA = props.distance(a.latitude, a.longitude, currentLat, currentLong)
     let distB = props.distance(b.latitude, b.longitude, currentLat, currentLong)
     if(distA < distB)
@@ -30,13 +30,15 @@ const Stations = (props) => {
         </thead>
         <tbody>
           {
-            stations.map(station => {
-
+            locations.map(location => {
             return(
-            <tr>
-              <td>{station.extra.address}</td>
-              <td>{props.distance(station.latitude, station.longitude, currentLat,  currentLong, 'M').toFixed(2)} miles</td>
-              <td>{station.free_bikes}</td>
+            <tr
+              onClick={e=> props.switchLocation(e, location)}
+              style={{cursor: 'pointer'}}
+            >
+              <td>{location.extra.address}</td>
+              <td>{props.distance(location.latitude, location.longitude, currentLat,  currentLong, 'M').toFixed(2)} miles</td>
+              <td>{location.free_bikes}</td>
             </tr>
               )
             })
@@ -47,4 +49,4 @@ const Stations = (props) => {
   )
 }
 
-export default Stations
+export default Locations

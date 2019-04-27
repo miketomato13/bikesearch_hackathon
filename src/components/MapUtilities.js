@@ -1,15 +1,15 @@
 export const parseGeoJson = data => {
   if (!data.length) return;
-  const parsedData = data.map(station => ({
+  const parsedData = data.map(location => ({
     type: "Feature",
     geometry: {
       type: "Point",
-      coordinates: [station.longitude, station.latitude]
+      coordinates: [location.longitude, location.latitude]
     },
     properties: {
-      id: station.id,
-      name: station.name,
-      free_bikes: `${station.free_bikes}`
+      id: location.id,
+      name: location.name,
+      free_bikes: `${location.free_bikes}`
     }
   }));
   return {
