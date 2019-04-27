@@ -1,14 +1,19 @@
-
-
 .palmtree {
   width: 50px;
 }
 
+.table {
+  margin: auto;
+  margin-top: 3rem;
+  width: 80%;
+}
+
 #map{
-  width: 80vw;
+  width: 80%;
   height: 400px;
   background-color: azure;
   margin: 0 auto;
+  margin-top: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
