@@ -28,7 +28,7 @@ export const locationLayers = {
   id: "locations",
   type: "symbol",
   source: "locations",
-  layout: { 'icon-image':'bicycle-15', 'icon-allow-overlap': true}
+  layout: { 'icon-image':'bicycle-15', 'icon-size': 2.5, 'icon-allow-overlap': true}
 };
 
 // icon_badge

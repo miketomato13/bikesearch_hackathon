@@ -4,10 +4,10 @@ import palmtree from '../images/palmtree.png'
 
 const Navbar = () => {
   return(
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-dd bg-light">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
         <img
             src={palmtree}
             alt='atl'

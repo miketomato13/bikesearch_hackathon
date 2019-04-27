@@ -21,12 +21,12 @@ const Locations = (props) => {
   locations.splice(-1,1) //removes the last element, which is a demo station
   return (
     <div>
-      <table>
-        <thead>
+      <table class="table">
+        <thead class="thead-light">
           <tr>
-            <th>Address</th>
-            <th>Distance</th>
-            <th>Bikes Available</th>
+            <th scope="col">Address</th>
+            <th scope="col">Distance</th>
+            <th scope="col">Bikes Available</th>
           </tr>
         </thead>
         <tbody>
