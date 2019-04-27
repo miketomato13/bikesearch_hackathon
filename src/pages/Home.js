@@ -7,10 +7,28 @@ import Map from '../components/Map'
 
 export default class Home extends Component {
   state = { locations: [],
-            location: {}
+            location: {},
+            user_location: {}
           }
 
+
+  success = (pos) => {
+    var crd = pos.coords;
+    this.setState({user_location: {lat:crd.latitude, long: crd.longitude}})
+  }
+
+  error = (err) => {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
     axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
       .then(res => {
         this.setState({ locations: res.data.network.stations })
@@ -45,7 +63,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { locations, location } = this.state
+    const { locations, location, user_location } = this.state
     const currentLocation = { lng: location.longitude, lat: location.latitude }
     console.log(currentLocation)
     return (
@@ -61,6 +79,7 @@ export default class Home extends Component {
           locations={locations}
           distance={this.distance}
           switchLocation={this.switchLocation}
+          user_location={user_location}
         />
       </div>
     )

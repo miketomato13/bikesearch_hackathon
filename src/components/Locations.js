@@ -1,12 +1,17 @@
 import React from 'react'
 
+
+
 const Locations = (props) => {
+
   let locations = props.locations
-  let currentLat = 25.7760782;
-  let currentLong = -80.194204;
+  let userLat = props.user_location.lat
+  let userLong = props.user_location.long
+
+
   locations = locations.sort((a,b) => {
-    let distA = props.distance(a.latitude, a.longitude, currentLat, currentLong)
-    let distB = props.distance(b.latitude, b.longitude, currentLat, currentLong)
+    let distA = props.distance(a.latitude, a.longitude, userLat, userLong)
+    let distB = props.distance(b.latitude, b.longitude, userLat, userLong)
     if(distA < distB)
     {
       return -1
@@ -16,8 +21,9 @@ const Locations = (props) => {
       return 1;
     }
     return 0;
-
   })
+
+
   locations.splice(-1,1) //removes the last element, which is a demo station
   return (
     <div>
@@ -36,9 +42,10 @@ const Locations = (props) => {
             <tr
               onClick={e=> props.switchLocation(e, location)}
               style={{cursor: 'pointer'}}
+              key={location.id}
             >
               <td>{location.extra.address}</td>
-              <td>{props.distance(location.latitude, location.longitude, currentLat,  currentLong, 'M').toFixed(2)} miles</td>
+              <td>{props.distance(location.latitude, location.longitude, userLat,  userLong, 'M').toFixed(2)} miles</td>
               <td>{location.free_bikes}</td>
             </tr>
               )
@@ -49,5 +56,7 @@ const Locations = (props) => {
     </div>
   )
 }
+
+
 
 export default Locations
