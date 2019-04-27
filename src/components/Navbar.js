@@ -5,10 +5,10 @@ import miamiridez from '../images/miamiridez.png'
 
 const Navbar = () => {
   return(
-    <nav class="navbar navbar-dd">
+    <nav className="navbar">
     <div>
-      <div class="navbar-header">
-        <img class="logo"
+      <div className="navbar-header">
+        <img className="logo"
              src={miamiridez}
         />
       </div>
