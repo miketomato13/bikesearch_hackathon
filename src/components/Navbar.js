@@ -11,7 +11,6 @@ const Navbar = () => {
         <img class="logo"
              src={miamiridez}
         />
-
       </div>
     </div>
   </nav>
