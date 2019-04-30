@@ -73,10 +73,10 @@ class Map extends Component {
   fetchLocations = async () => {
     const map = this.map;
     let { locations } = this.props;
-    const parsedLocations = parseGeoJson(locations);
     locations = locations.filter( item => {
       return item.name !== "5 - Demo CycloShare  Lab";
     })
+    const parsedLocations = parseGeoJson(locations);
     map.getSource("locations").setData(parsedLocations);
   };
 
