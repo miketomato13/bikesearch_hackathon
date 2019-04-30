@@ -31,8 +31,12 @@ class Map extends Component {
   createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
-    const { locations } = this.props;
+    let { locations } = this.props;
+    locations = locations.filter( item => {
+      return item.name !== "5 - Demo CycloShare  Lab";
+    })
     const parsedLocations = parseGeoJson(locations);
+
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: geolocationOptions,
@@ -68,8 +72,11 @@ class Map extends Component {
 
   fetchLocations = async () => {
     const map = this.map;
-    const { locations } = this.props;
+    let { locations } = this.props;
     const parsedLocations = parseGeoJson(locations);
+    locations = locations.filter( item => {
+      return item.name !== "5 - Demo CycloShare  Lab";
+    })
     map.getSource("locations").setData(parsedLocations);
   };
 

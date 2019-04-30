@@ -43,7 +43,7 @@ export default class Home extends Component {
   };
 
   distance = (lat1, lon1, lat2, lon2, unit) => {
-    if ((lat1 == lat2) && (lon1 == lon2)) {
+    if ((lat1 === lat2) && (lon1 === lon2)) {
   		return 0;
   	}
   	else {
@@ -58,8 +58,8 @@ export default class Home extends Component {
   		dist = Math.acos(dist);
   		dist = dist * 180/Math.PI;
   		dist = dist * 60 * 1.1515;
-  		if (unit=="K") { dist = dist * 1.609344 }
-  		if (unit=="N") { dist = dist * 0.8684 }
+  		if (unit==="K") { dist = dist * 1.609344 }
+  		if (unit==="N") { dist = dist * 0.8684 }
   		return dist;
   	}
   }
@@ -67,7 +67,6 @@ export default class Home extends Component {
   render() {
     const { locations, location, user_location } = this.state
     const currentLocation = { lng: location.longitude, lat: location.latitude }
-    console.log(currentLocation)
     return (
       <div>
         <Navbar/>

@@ -3,7 +3,6 @@ import React from 'react'
 
 
 const Locations = (props) => {
-
   let locations = props.locations
   let userLat = props.user_location.lat
   let userLong = props.user_location.long
@@ -23,9 +22,11 @@ const Locations = (props) => {
     return 0;
   })
 
+  locations = locations.filter( item => {
+    return item.name !== "5 - Demo CycloShare  Lab";
+  })
 
-  locations.splice(-1,1) //removes the last element, which is a demo station
-  locations = locations.slice(0,20)
+  locations = locations.slice(0,19)
 
   return (
     <div>
