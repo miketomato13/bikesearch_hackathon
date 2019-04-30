@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment  } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import Locations from '../components/Locations'
-import Map from '../components/Map'
 import FooterPage from '../components/FooterPage'
+import Map from '../components/Map'
+import Loader from 'react-loader-spinner'
+
 
 
 export default class Home extends Component {
@@ -12,14 +14,13 @@ export default class Home extends Component {
             user_location: {}
           }
 
-
   success = (pos) => {
     var crd = pos.coords;
-    this.setState({user_location: {lat:crd.latitude, long: crd.longitude}})
-  }
-
-  error = (err) => {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+    this.setState( {user_location: {lat:crd.latitude, long: crd.longitude}} )
+    axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
+      .then(res => {
+        this.setState({ locations: res.data.network.stations })
+      })
   }
 
   options = {
@@ -28,14 +29,9 @@ export default class Home extends Component {
     maximumAge: 0
   };
 
-
-  componentDidMount() {
-    axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
-      .then(res => {
-        this.setState({ locations: res.data.network.stations })
-      })
-    navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
-    }
+  componentDidMount = () => {
+    navigator.geolocation.getCurrentPosition(this.success);
+  }
 
   switchLocation = (e, location) => {
     e.preventDefault();
@@ -71,18 +67,28 @@ export default class Home extends Component {
     return (
       <div>
         <Navbar/>
-        {locations.length &&
-        <Map
-          locations={locations}
-          currentLocation={currentLocation}
-        />
+        {
+          locations.length ?
+            <Fragment>
+              <Map
+                locations={locations}
+                currentLocation={currentLocation}
+              />
+              <Locations
+                locations={locations}
+                distance={this.distance}
+                switchLocation={this.switchLocation}
+                user_location={user_location}
+              />
+            </Fragment> : (
+              <Loader
+                type="Circles"
+                color="hotpink"
+                height="200"
+                width="200" />
+            )
         }
-        <Locations
-          locations={locations}
-          distance={this.distance}
-          switchLocation={this.switchLocation}
-          user_location={user_location}
-        />
+
         <FooterPage/>
       </div>
     )
