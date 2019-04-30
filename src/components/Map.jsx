@@ -52,7 +52,7 @@ class Map extends Component {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        map.flyTo({center: coordinates, speed: 0.2, zoom: 14});
+        map.flyTo({center: coordinates, speed: 0.3, zoom: 14});
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
@@ -77,7 +77,8 @@ class Map extends Component {
     this.map.flyTo({
       center: [lng, lat],
       bearing: 0,
-      zoom: 11,
+      zoom: 14,
+      speed: 0.3,
       pitch: 20,
     });
   };
