@@ -20,8 +20,8 @@ export const parseGeoJson = data => {
 
 export const geolocationOptions = {
   enabledHighAccuracy: true,
-  maximumAge: 15000,
-  timeout: 10000
+  maximumAge: 0,
+  timeout: 5000
 };
 
 export const locationLayers = {
