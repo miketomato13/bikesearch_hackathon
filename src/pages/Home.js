@@ -28,12 +28,13 @@ export default class Home extends Component {
     maximumAge: 0
   };
 
+
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
     axios.get(`https://api.citybik.es/v2/networks/decobike-miami-beach`)
       .then(res => {
         this.setState({ locations: res.data.network.stations })
       })
+    navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
     }
 
   switchLocation = (e, location) => {

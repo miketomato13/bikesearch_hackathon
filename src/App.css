@@ -58,6 +58,7 @@ tr:hover {
 .pop {
   background-color: white;
   align-items: center;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
@@ -99,4 +100,3 @@ th {
   background-color: white;
   align-items: center;
 }
-

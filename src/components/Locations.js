@@ -23,7 +23,7 @@ const Locations = (props) => {
   })
 
   locations = locations.filter( item => {
-    return item.name !== "5 - Demo CycloShare  Lab";
+    return item.name !== "5 - Demo CycloShare Lab";
   })
 
   locations = locations.slice(0,19)
