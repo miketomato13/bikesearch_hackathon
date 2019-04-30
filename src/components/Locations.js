@@ -26,6 +26,7 @@ const Locations = (props) => {
 
   locations.splice(-1,1) //removes the last element, which is a demo station
   locations = locations.slice(0,20)
+  
   return (
     <div>
       <table className="table">
