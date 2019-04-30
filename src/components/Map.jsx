@@ -13,18 +13,21 @@ class Map extends Component {
     const mapOptions = {
       container: this.mapContainer,
       style: "mapbox://styles/jordanmarcr/cjuzpsa3w0pz41fs382nghi20",
-      zoom: 10,
-      center: [-80.2043, 25.803],
+      zoom: 11,
+      center: [-80.1748, 25.7864],
     };
     this.createMap(mapOptions, geolocationOptions);
   }
+
   shouldComponentUpdate(nextProps) {
     return this.props.currentLocation !== nextProps.currentLocation;
   }
+
   componentDidUpdate() {
     const { lng, lat } = this.props.currentLocation;
     this.props.currentLocation && this.flyTo({ lng, lat });
   }
+
   createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
@@ -53,20 +56,22 @@ class Map extends Component {
           .setLngLat(coordinates)
           .setHTML(
             `<div class="pop">
-            <p>${name}</p>
-            <p>Available: ${free_bikes}</p>
-          </div>`
+              <p>${name}</p>
+              <p>Available: ${free_bikes}</p>
+            </div>`
           )
           .addTo(map);
       });
     });
   };
+
   fetchLocations = async () => {
     const map = this.map;
     const { locations } = this.props;
     const parsedLocations = parseGeoJson(locations);
     map.getSource("locations").setData(parsedLocations);
   };
+
   flyTo = ({ lng, lat }) => {
     this.map.flyTo({
       center: [lng, lat],
@@ -75,9 +80,11 @@ class Map extends Component {
       pitch: 20,
     });
   };
+
   componentWillUnmount() {
     this.map.remove();
   }
+
   render() {
     return <div id="map" ref={el => (this.mapContainer = el)} />;
   }
