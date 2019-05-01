@@ -3,6 +3,13 @@ body {
   background-color: rgb(171, 214, 214);
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 #footer{
   background-color: #edfffc!important;
   margin-top:2rem;

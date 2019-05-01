@@ -66,31 +66,25 @@ export default class Home extends Component {
     const currentLocation = { lng: location.longitude, lat: location.latitude }
     return (
       <div>
-        <Navbar/>
-        {
-          locations.length ?
-            <Fragment>
-              <Map
-                locations={locations}
-                currentLocation={currentLocation}
-              />
-              <Locations
-                locations={locations}
-                distance={this.distance}
-                switchLocation={this.switchLocation}
-                user_location={user_location}
-              />
-            </Fragment> : (
-              <Loader
-                type="Circles"
-                color="hotpink"
-                height="200"
-                width="200" />
-            )
-        }
+        <Navbar />
+        {locations.length ? (
+          <Fragment>
+            <Map locations={locations} currentLocation={currentLocation} />
+            <Locations
+              locations={locations}
+              distance={this.distance}
+              switchLocation={this.switchLocation}
+              user_location={user_location}
+            />
+          </Fragment>
+        ) : (
+          <div className="flex">
+            <Loader type="Circles" color="hotpink" height="100" width="100" />
+          </div>
+        )}
 
-        <FooterPage/>
+        <FooterPage />
       </div>
-    )
+    );
   }
 }
